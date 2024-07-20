@@ -1,0 +1,7 @@
+{
+  "name": "GeonBG",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
