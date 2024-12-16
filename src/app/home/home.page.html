@@ -1,20 +1,32 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Blank
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Menu principal</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div id="main">
+    <audio src="../../assets/music/Menu.mp3" id="audio" autoplay></audio>
+    <div id="contenido">
+      <div id="titulo">
+        <img src="../../assets/img/Logo.png" alt="titulo" class="titulo">
+      </div>
+      <div id="menu">
+        <button class="opcion">
+          <img src="../../assets/img/Iniciar_Partida.png" alt="nueva_partida" class="nuevoJuego">
+        </button>
+        <button class="opcion">
+          <img src="../../assets/img/Opciones.png" alt="opciones" class="opciones">
+        </button>
+      </div>
+    </div>
   </div>
 </ion-content>
