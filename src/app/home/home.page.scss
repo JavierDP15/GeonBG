@@ -15,6 +15,8 @@
   background: url('../../assets/img/Fondo_Inicio.jpg');
   background-size: cover;
 
+  animation: fondoOscuro 4s forwards;
+
   #contenido{
     display: flex;
     flex-direction: column;
@@ -25,6 +27,7 @@
     padding-bottom: 1.5%;
     
     #titulo{
+      animation: tituloArriba 4s ease-in-out forwards;
     }
     
     #menu{
@@ -32,9 +35,11 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
-      gap: 0.4rem;
+      gap: 1rem;
       
-      width: 80%;
+      width: 60%;
+
+      animation: menuAparece 4s ease-in-out forwards;
       
       .opcion{
         background: none;
@@ -49,4 +54,46 @@
       }
     }
   }
+}
+
+@keyframes fondoOscuro {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+}
+
+@keyframes tituloArriba {
+  0% {
+    opacity: 0;
+    transform: translateY(30%) scale(2);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(30%) scale(2);
+  }
+  50% {
+    transform: translateY(30%) scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes menuAparece {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  75% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
 }
