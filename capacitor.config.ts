@@ -12,6 +12,9 @@ const config: CapacitorConfig = {
     ScreenOrientation: {
       orientation: 'landscape' // Fijar a horizontal
     }
+  },
+  android: {
+    webContentsDebuggingEnabled: true,
   }
 };
 
