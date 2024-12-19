@@ -8,9 +8,9 @@
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
+    <!-- <ion-toolbar>
       <ion-title size="large">Menu principal</ion-title>
-    </ion-toolbar>
+    </ion-toolbar> -->
   </ion-header>
 
   <div id="main">
@@ -20,7 +20,7 @@
         <img src="../../assets/img/Logo.png" alt="titulo" class="titulo">
       </div>
       <div id="menu">
-        <button class="boton sketsa"><span>Nueva Partida</span></button>
+        <button class="boton sketsa" (click)="nuevaPartida()"><span>Nueva Partida</span></button>
         <button class="boton sketsa"><span>Opciones</span></button>
       </div>
     </div>

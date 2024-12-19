@@ -1,0 +1,43 @@
+.boton_personaje{   
+    
+    .retrato_i{
+        max-width: 25%;
+        transform: translate(9vw, 2vh);
+    }
+
+    .retrato_d{
+        max-width: 25%;
+        transform: translate(-9vw, 2vh);
+    }
+}
+.boton{
+    background: url('../../../assets/img/Boton.png');
+    background-size: cover;
+
+    display: flex;
+    flex-direction: row;
+
+    width: 37vw;
+    height: 17vh;
+
+    font-family: 'Sketsa', sans-serif;
+    color: #e5bf5a;
+    font-size: 1.3rem;
+    text-shadow: 0px 1px 0px black;
+    justify-content: center;
+    padding-top: 6vh;
+}
+
+.izquierda{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: end;
+}
+
+.derecha{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: end;
+}
