@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Personaje } from 'src/app/interfaces/personaje';
 
 @Component({
@@ -12,6 +12,7 @@ import { Personaje } from 'src/app/interfaces/personaje';
 export class BotonPersonajeComponent  implements OnInit {
   @Input() personaje!: Personaje;
   @Input() index!: number;
+  @Output() personajeSeleccionado = new EventEmitter<number>();
 
   constructor() { }
 
@@ -21,5 +22,9 @@ export class BotonPersonajeComponent  implements OnInit {
 
   esPar(num: number): boolean {
     return num % 2 === 0;
+  }
+
+  onClick() {
+    this.personajeSeleccionado.emit(this.index);
   }
 }

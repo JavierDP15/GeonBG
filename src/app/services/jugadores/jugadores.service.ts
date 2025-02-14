@@ -76,12 +76,18 @@ export class JugadoresService {
 
       const query = `
         UPDATE jugadores
-        SET nombre_jugador = (?)
-        WHERE id = (?)
-        `
-      await db.run(query, [nombre, id]);
+        SET nombre_jugador = ('${nombre}')
+        WHERE id = ('${id}')
+        `;
+      const result = await db.query(query);
+      
+      this.loadJugadores();
+      console.log('Nombre del jugador modificado.');
+
+      return result;
     } catch (error) {
       console.log('Error al cambiar el nombre del jugador:', error);
+      return undefined;
     }
   }
 }

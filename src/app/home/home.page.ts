@@ -35,6 +35,7 @@ export class HomePage {
     async iniciarNuevaPartida() {
       try {
         await this.sqliteService.resetearTablas();
+        await this.personajesService.reiniciarPersonajes();
         console.log('Partida iniciada con exito');
       } catch (error) {
         console.error('Error al iniciar nueva partida:', error);

@@ -1,12 +1,12 @@
 <div *ngIf="esPar(index)">
-  <div class="boton_personaje izquierda">
+  <div class="boton_personaje izquierda" (click)="onClick()">
     <img class="retrato_i" [src]="personaje.retrato" alt="{{personaje.nombre}}">
     <button class="boton"><span>{{personaje.nombre}}</span></button>
   </div>
 </div>
 
 <div *ngIf="!esPar(index)">
-  <div class="boton_personaje derecha">
+  <div class="boton_personaje derecha" (click)="onClick()">
     <button class="boton"><span>{{personaje.nombre}}</span></button>
     <img class="retrato_d" [src]="personaje.retrato" alt="{{personaje.nombre}}">
   </div>

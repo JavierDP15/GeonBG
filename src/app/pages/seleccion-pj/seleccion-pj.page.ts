@@ -10,6 +10,7 @@ import { BotonPersonajeComponent } from 'src/app/componentes/boton-personaje/bot
 import { ActivatedRoute } from '@angular/router';
 import { Jugador } from 'src/app/interfaces/jugador';
 import { SqliteService } from 'src/app/services/sqlite.service';
+import { HojaPersonajeComponent } from 'src/app/componentes/hoja-personaje/hoja-personaje.component';
 
 @Component({
   selector: 'app-seleccion-pj',
@@ -23,16 +24,17 @@ import { SqliteService } from 'src/app/services/sqlite.service';
     IonToolbar, 
     CommonModule, 
     FormsModule,
-    BotonPersonajeComponent
+    BotonPersonajeComponent,
+    HojaPersonajeComponent
   ]
 })
 export class SeleccionPjPage implements OnInit {
   jugadorId: number = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
   cantidadJugadores: number | null = null;
   jugadores = this.jugadoresService.getJugadores();
-  // jugadores: { id: number, nombre_jugador: string }[] = [];
-  // jugadores: Jugador[] = [];
   personajes: Personaje[] = [];
+  // personajes = this.personajesService.getPersonajes();
+  personajeSeleccionado: number | null = null;
 
   constructor(
     private sqlite: SqliteService,
@@ -43,15 +45,29 @@ export class SeleccionPjPage implements OnInit {
 
   async ngOnInit() {
     try {
-      this.personajes = await this.personajesService.getPersonajes();
-      this.jugadores = await this.jugadoresService.getJugadores();
+      this.personajes = this.personajesService.getPersonajes();
       this.cantidadJugadores = this.jugadores.length;
     } catch (error) {
       console.error('Se ha producido un error.')
     }
   }
 
-  probandoHojaPerosnaje(id: Number) {
+  mostrarHojaPersonaje(index: number) {
+    this.personajeSeleccionado = index;
+  }
 
+  deseleccionarPersonaje() {
+    this.personajeSeleccionado = null;
+  }
+
+  getPersonajeSeleccionado(): Personaje{
+    return this.personajes[this.personajeSeleccionado!] 
+              || 
+           {id: '', 
+           nombre: '', 
+           retrato: '', 
+           foto: '', 
+           seleccionado: '', 
+           idJugador: '' };
   }
 }

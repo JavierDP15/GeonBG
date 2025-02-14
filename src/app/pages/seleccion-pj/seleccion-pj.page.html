@@ -14,12 +14,19 @@
   <div id="main">
     <div class="titulo"></div>
     <div class="personajes">
-      <div class="prueba">
-        <button (click)="probandoHojaPerosnaje(1)">Prueba</button>
-      </div>
-      <ng-container *ngFor="let personaje of personajes; let i = index">A
-        <app-boton-personaje [personaje]="personaje" [index]="i"></app-boton-personaje>
+      <ng-container *ngFor="let personaje of personajes; let i = index">
+        <app-boton-personaje 
+          [personaje]="personaje" 
+          [index]="i" 
+          (personajeSeleccionado)="mostrarHojaPersonaje(i)"></app-boton-personaje>
       </ng-container>
     </div>
+  </div>
+
+  <div class="hoja-pj" *ngIf="personajeSeleccionado !== null && getPersonajeSeleccionado()">
+    <app-hoja-personaje 
+      [personaje]="getPersonajeSeleccionado()"
+      (deseleccionar)="deseleccionarPersonaje()">
+    </app-hoja-personaje>
   </div>
 </ion-content>

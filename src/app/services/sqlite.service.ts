@@ -106,15 +106,15 @@ export class SqliteService {
         retrato TEXT NOT NULL,
         foto TEXT NOT NULL,
         seleccionado BOOLEAN NOT NULL DEFAULT 0,
-        id_jugador INTEGER UNIQUE,
+        id_jugador INTEGER,
         FOREIGN KEY (id_jugador)  REFERENCES jugadores(id) ON DELETE CASCADE
       );`;
 
-      if(this.db) {
+      // if(this.db) {
         await this.db.execute(crearTablaJugadores);
         await this.db.execute(crearTablaPersonajes);
         console.log('Tablas de jugadores y personajes creadas con correctamente');
-      }
+      // }
   }
 
   async resetearTablas() {
