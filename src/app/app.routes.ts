@@ -11,7 +11,15 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'seleccion-pj',
-    loadComponent: () => import('./pages/seleccion-pj/seleccion-pj.page').then( m => m.SeleccionPjPage)
+    path: 'numero-jugadores',
+    loadComponent: () => import('./pages/numero-jugadores/numero-jugadores.page').then(m => m.NumeroJugadoresPage)
+  },
+  {
+    path: 'nombre-jugador/:id',
+    loadComponent: () => import('./pages/nombre-jugador/nombre-jugador.page').then(m => m.NombreJugadorPage)
+  },
+  {
+    path: 'seleccion-pj/:id',
+    loadComponent: () => import('./pages/seleccion-pj/seleccion-pj.page').then(m => m.SeleccionPjPage)
   },
 ];

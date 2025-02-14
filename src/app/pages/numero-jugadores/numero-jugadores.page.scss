@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'Sketsa';
+    src: url('../../../assets/fonts/Sketsa.ttf');
+  }
+
+@font-face {
+    font-family: 'Poor-Rich';
+    src: url('../../../assets/fonts/Poor-Rich.TTF');
+}
+ 
+ #main{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    background: url('../../../assets/img/Fondo_Num_Jugadores.jpg');
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+
+    .titulo {
+        height: 30vh;
+    }
+
+    .seleccion{
+        color: #1e120d;
+        font-family: 'Poor-Rich', sans-serif;
+        font-size: 1.2rem;
+
+        transform: translateX(3px);
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, auto) auto;
+        column-gap: 5vw;
+        height: 60vh;
+
+            .opcion {
+                position: relative;
+                display: flex;
+                align-items: center;
+                margin-right: 1.5vw;
+            }
+
+            .opcion input {
+                position: absolute;
+                opacity: 0;
+                z-index: 1;
+            }
+
+            .opcion label {
+                position: relative;
+                display: inline-block;
+                padding-left: 50px;
+                line-height: 40px;
+            }
+
+            .opcion label::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                // background: url('../../../assets/img/Casilla.png');
+                background: url('/assets/img/Casilla.png');
+                width: 40px;
+                height: 40px;
+                background-size: cover;
+                z-index: 1;
+            }
+
+            .opcion input:checked + label::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 50px;
+                height: 50px;
+                background: url('/assets/img/Check.png');
+                background-size: cover;
+                background-position: center;
+                z-index: 2;
+            }
+
+        .enviar {
+            background: url('../../../assets/img/Boton.png');
+            background-size: cover;
+            border: 0;
+
+            grid-column: span 2;
+            justify-self: center;
+            align-self: center;
+            cursor: pointer;
+
+            width: 55%;
+
+            padding-top: 0.6rem;
+            font-family: 'Sketsa', sans-serif;
+            color: #e5bf5a;
+            font-size: 1.5rem;
+            text-shadow: 0px 1px 0px black;
+
+        }
+    }
+ }

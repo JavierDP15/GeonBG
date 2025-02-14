@@ -16,7 +16,7 @@ export class BotonPersonajeComponent  implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.index);
+    // console.log(this.index);
   }
 
   esPar(num: number): boolean {

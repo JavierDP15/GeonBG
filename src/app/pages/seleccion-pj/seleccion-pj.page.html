@@ -14,7 +14,10 @@
   <div id="main">
     <div class="titulo"></div>
     <div class="personajes">
-      <ng-container *ngFor="let personaje of personajes; let i = index">
+      <div class="prueba">
+        <button (click)="probandoHojaPerosnaje(1)">Prueba</button>
+      </div>
+      <ng-container *ngFor="let personaje of personajes; let i = index">A
         <app-boton-personaje [personaje]="personaje" [index]="i"></app-boton-personaje>
       </ng-container>
     </div>

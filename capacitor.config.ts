@@ -11,7 +11,8 @@ const config: CapacitorConfig = {
     },
     ScreenOrientation: {
       orientation: 'landscape' // Fijar a horizontal
-    }
+    },
+    CapacitorSQLite: {}
   },
   android: {
     webContentsDebuggingEnabled: true,

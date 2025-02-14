@@ -2,6 +2,11 @@ ion-content {
     --overflow: auto;
 }
 
+@font-face {
+    font-family: 'Sketsa';
+    src: url('../../../assets/fonts/Sketsa.ttf');
+  }
+
 #main{
     position: fixed;
     top: 0;

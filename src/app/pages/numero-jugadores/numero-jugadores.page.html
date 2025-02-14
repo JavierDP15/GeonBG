@@ -1,0 +1,28 @@
+<ion-content [fullscreen]="true">
+  <div id="main">
+    <div class="titulo"></div>
+    <form (ngSubmit)="submit()" class="seleccion">
+      <div class="opcion">
+        <input id="opcion_1" type="radio" name="jugadores" value="1" [(ngModel)]="numJugadores" required>
+        <label for="opcion_1">1 Jugador</label>
+      </div>
+
+      <div class="opcion">
+        <input id="opcion_2" type="radio" name="jugadores" value="2" [(ngModel)]="numJugadores" required>
+        <label for="opcion_2">2 Jugadores</label>
+      </div>
+      
+      <div class="opcion">
+        <input id="opcion_3" type="radio" name="jugadores" value="3" [(ngModel)]="numJugadores" required>
+        <label for="opcion_3">3 Jugadores</label>
+      </div>
+
+      <div class="opcion">
+        <input id="opcion_4" type="radio" name="jugadores" value="4" [(ngModel)]="numJugadores" required>
+        <label for="opcion_4">4 Jugadores</label>
+      </div>
+
+      <input class="enviar" type="submit" value="Continuar">
+    </form>
+  </div>
+</ion-content>

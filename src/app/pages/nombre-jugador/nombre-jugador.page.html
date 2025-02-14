@@ -1,0 +1,23 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>nombre-jugador</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+  <!-- <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">nombre-jugador</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+  <div id="main">
+    <div class="titulo"></div>
+    <form class="form" (ngSubmit)="submit()">
+      <div class="nombre">
+        <label for="nombre-jugador">Nombre del jugador</label>
+        <input id="nombre-jugador" type="text" placeholder='Jugador {{jugadorId}}' [(ngModel)]="nombreJugador">
+      </div>
+      <input class="enviar" type="submit" value="Aceptar">
+    </form>
+  </div>
+</ion-content>

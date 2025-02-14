@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
-import { PersonajesService } from '../services/personajes.service';
+import { JugadoresService } from '../services/jugadores/jugadores.service';
+import { PersonajesService } from '../services/personajes/personajes.service';
 import { Router } from '@angular/router';
+import { SqliteService } from '../services/sqlite.service';
+import { Platform } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-home',
@@ -12,12 +15,31 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
   constructor(
-    private gameData: PersonajesService,
-    private router: Router) {}
+    private sqliteService: SqliteService,
+    private personajesService: PersonajesService,
+    private jugadoresService: JugadoresService,
+    private router: Router,
+    private platform: Platform) {}
 
-  nuevaPartida() {
-    this.gameData.inicializarDatosJuego();
+    async ngOnInit() {
+      // try {
+      //   await this.platform.ready();
+      //   await this.sqliteService.iniciarBD();
+      //   console.log('Conexion a la base de datos realizada');
+      // } catch (error) {
+      //   console.error ('Error al conectar a la base de datos:', error);
+      //   return;
+      // }
+    }
 
-    this.router.navigate(['/seleccion-pj']);
-  }
+    async iniciarNuevaPartida() {
+      try {
+        await this.sqliteService.resetearTablas();
+        console.log('Partida iniciada con exito');
+      } catch (error) {
+        console.error('Error al iniciar nueva partida:', error);
+      }
+      this.router.navigate(['/numero-jugadores']);
+    }
+
 }

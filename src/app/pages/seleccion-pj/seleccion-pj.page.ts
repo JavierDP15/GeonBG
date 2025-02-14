@@ -4,8 +4,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { Personaje } from 'src/app/interfaces/personaje';
-import { PersonajesService } from 'src/app/services/personajes.service';
+import { PersonajesService } from 'src/app/services/personajes/personajes.service';
+import { JugadoresService } from 'src/app/services/jugadores/jugadores.service';
 import { BotonPersonajeComponent } from 'src/app/componentes/boton-personaje/boton-personaje.component';
+import { ActivatedRoute } from '@angular/router';
+import { Jugador } from 'src/app/interfaces/jugador';
+import { SqliteService } from 'src/app/services/sqlite.service';
 
 @Component({
   selector: 'app-seleccion-pj',
@@ -23,14 +27,31 @@ import { BotonPersonajeComponent } from 'src/app/componentes/boton-personaje/bot
   ]
 })
 export class SeleccionPjPage implements OnInit {
+  jugadorId: number = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+  cantidadJugadores: number | null = null;
+  jugadores = this.jugadoresService.getJugadores();
+  // jugadores: { id: number, nombre_jugador: string }[] = [];
+  // jugadores: Jugador[] = [];
   personajes: Personaje[] = [];
 
   constructor(
-    private personajesService: PersonajesService
+    private sqlite: SqliteService,
+    private personajesService: PersonajesService,
+    private jugadoresService: JugadoresService,
+    private route: ActivatedRoute
   ) { }
 
-  ngOnInit() {
-    this.personajes = this.personajesService.getPersonajes();
+  async ngOnInit() {
+    try {
+      this.personajes = await this.personajesService.getPersonajes();
+      this.jugadores = await this.jugadoresService.getJugadores();
+      this.cantidadJugadores = this.jugadores.length;
+    } catch (error) {
+      console.error('Se ha producido un error.')
+    }
   }
 
+  probandoHojaPerosnaje(id: Number) {
+
+  }
 }
