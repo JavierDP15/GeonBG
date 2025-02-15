@@ -31,10 +31,19 @@
     .estadisticas {
         color: #e5bf5a;
         font-family: 'Hidayatullah', sans-serif;
+
+        img {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+            object-fit: cover;
+            transform: translateY(30px);
+        }
     }
 
     .foto {
-        height: 200px;
+        width: 300px;
+        transform: scale(0.6rem);
     }
 
     .body {
