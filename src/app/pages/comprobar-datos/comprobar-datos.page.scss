@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'Sketsa';
+    src: url('../../../assets/fonts/Sketsa.ttf');
+  }
+
+@font-face {
+    font-family: 'Poor-Rich';
+    src: url('../../../assets/fonts/Poor-Rich.TTF');
+}
+
+@font-face {
+    font-family: 'Hidayatullah';
+    src: url('../../../assets/fonts/Hidayatullah.ttf');
+}
+
+#main {
+    background: url('../../../assets/img/Fondo_Hoja_Pj.jpg');
+    background-size: cover;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}

@@ -8,11 +8,15 @@ const config: CapacitorConfig = {
   plugins: {
     SplashScreen: {
       launchShowDuration: 0,
+      launchAutoHide: false,
     },
     ScreenOrientation: {
       orientation: 'landscape' // Fijar a horizontal
     },
-    CapacitorSQLite: {}
+    CapacitorSQLite: {
+      "iosDatabaseLocation": "Library",
+      "androidDatabaseLocation": "databases"
+    }
   },
   android: {
     webContentsDebuggingEnabled: true,

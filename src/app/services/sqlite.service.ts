@@ -43,40 +43,6 @@ export class SqliteService {
       }
   }
 
-  // async hayPartidaEnCurso(): Promise<boolean> {
-  //   if (!this.db) {
-  //     console.error('No hay conexión a la base de datos');
-  //     return false;
-  //   }
-
-  //   const query = `SELECT * FROM partida WHERE enCurso = 1`;
-
-  //   try{
-  //     const result = await this.db.query(query);
-
-  //     return !!(result.values && result.values.length > 0);
-  //   } catch (error) {
-  //     console.error('Error al verificar la partida en curso:', error);
-  //     return false;
-  //   }
-  // }
-
-  async hayPartidaEnCurso(): Promise<boolean> {
-    const query = `SELECT enCurso FROM partida LIMIT 1;`;
-
-    try {
-      const result = await this.db.query(query);
-      if (result.values && result.values.length > 0) {
-        return result.values[0].enCurso === 1;
-      } else {
-        return false;
-      }
-    } catch (error) {
-      console.error('Error al verificar partida en curso:', error);
-      return false;
-    }
-  }
-
   // Método para obtener la conexión a la BD
   getDatabaseConnection(): SQLiteDBConnection {
     if (!this.db) {
@@ -84,7 +50,6 @@ export class SqliteService {
     }
     return this.db;
   }
-
 
   private async createTables() {
       const crearTablaJugadores = `CREATE TABLE IF NOT EXISTS jugadores (
@@ -120,6 +85,15 @@ export class SqliteService {
       } 
     } catch (error) {
       console.error('Error al resetear las tablas:', error);
+    }
+  }
+
+  async guardarDatos() {
+    try {
+      await this.db.run("COMMIT;")
+      console.log("Base de datos guardada en almacenamiento permanente");
+    } catch (error) {
+      console.error("Error guardando en almacenamiento permanente:", error);
     }
   }
 

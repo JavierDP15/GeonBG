@@ -10,21 +10,6 @@ export class PersonajesService {
 
   constructor(private sqliteservice: SqliteService) { }
 
-  // async crearPersonaje(nombre: string, retrato: string, foto: string, idJugador: number | null){
-  //   const db = this.sqliteservice.getDatabaseConnection();
-  //   if (db) {
-  //     try {
-  //       const query = `INSERT INTO personajes (nombre, retrato, foto, seleccionado, id_jugador)
-  //                       VALUES (?, ?, ?, ?, ?)`;
-  //       await db.run(query, [nombre, retrato, foto, 0, idJugador]);
-  //       console.log('Personaje ', nombre ,' creado con exito');
-  //     } catch (error) {
-  //       console.error('Error al crear el personaje:', error);
-  //       throw error;
-  //     }
-  //   }
-  // }
-
   async loadPersonajes() {
     const db = this.sqliteservice.getDatabaseConnection();
     const personajes = await db.query('SELECT * FROM personajes;');
@@ -70,8 +55,8 @@ export class PersonajesService {
         WHERE id = ?;
         `;
         await db.run(query, [jugadorId, personajeId]);
-        this.loadPersonajes();
-        console.log('Personaje seleccionado.')
+        await this.loadPersonajes();
+        console.log('Personaje seleccionado para el jugador', jugadorId);
       } catch (error) {
         console.error('Error al asignar el personaje al jugador:', error);
         throw error;

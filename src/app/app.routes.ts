@@ -26,4 +26,8 @@ export const routes: Routes = [
     path: 'hoja-personaje-selec/:id-pj/:id-jugador',
     loadComponent: () => import('./pages/hoja-personaje-selec/hoja-personaje-selec.page').then( m => m.HojaPersonajeSelecPage)
   },
+  {
+    path: 'comprobar-datos',
+    loadComponent: () => import('./pages/comprobar-datos/comprobar-datos.page').then( m => m.ComprobarDatosPage)
+  },
 ];

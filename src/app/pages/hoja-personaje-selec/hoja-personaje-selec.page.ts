@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PersonajesService } from 'src/app/services/personajes/personajes.service';
 import { JugadoresService } from 'src/app/services/jugadores/jugadores.service';
 import { Jugador } from 'src/app/interfaces/jugador';
+import { SqliteService } from 'src/app/services/sqlite.service';
+import { PartidaService } from 'src/app/services/partida/partida.service';
 
 @Component({
   selector: 'app-hoja-personaje-selec',
@@ -34,6 +36,7 @@ export class HojaPersonajeSelecPage implements OnInit {
     private router: Router,
     private personajesService: PersonajesService,
     private jugadoresService: JugadoresService,
+    private partidaService: PartidaService,
     private route: ActivatedRoute
   ) { }
 
@@ -55,6 +58,8 @@ export class HojaPersonajeSelecPage implements OnInit {
       this.router.navigate(['/nombre-jugador', this.jugadorId + 1])
     } else {
       console.log('No hay más jugadores');
+      this.partidaService.empezarPartida();
+      this.router.navigate(['/comprobar-datos']);
     }
   }
 

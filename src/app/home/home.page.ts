@@ -5,6 +5,8 @@ import { PersonajesService } from '../services/personajes/personajes.service';
 import { Router } from '@angular/router';
 import { SqliteService } from '../services/sqlite.service';
 import { Platform } from '@ionic/angular/standalone';
+import { PartidaService } from '../services/partida/partida.service';
+import { Partida } from '../interfaces/partida';
 
 @Component({
   selector: 'app-home',
@@ -15,16 +17,38 @@ import { Platform } from '@ionic/angular/standalone';
 })
 export class HomePage {
   partidaEnCurso: boolean = false;
+  personajes = this.personajesService.getPersonajes();
+  jugadores = this.jugadoresService.getJugadores();
 
   constructor(
     private sqliteService: SqliteService,
     private personajesService: PersonajesService,
     private jugadoresService: JugadoresService,
+    private partidaService: PartidaService,
     private router: Router,
-    private platform: Platform) {}
+    private platform: Platform
+    ) {}
 
-    async ngOnInit() {
-      this.partidaEnCurso = await this.sqliteService.hayPartidaEnCurso();
+    // async ngOnInit() {
+    //   // this.partidaEnCurso = await this.partidaService.hayPartidaEnCurso();
+    //   console.log(this.partidaEnCurso);
+    //   this.partidaEnCurso = await this.partidaService.hayPartidaEnCurso();
+    //   console.log(this.partidaEnCurso);
+    //   console.log(this.partida);
+    // }
+
+    async ionViewWillEnter() {
+      console.log("ionViewWillEnter ejecutado");
+      await this.esperar(3000);
+      this.partidaEnCurso = await this.partidaService.hayPartidaEnCurso();
+      await this.personajesService.loadPersonajes();
+      await this.jugadoresService.loadJugadores();
+      console.log('Datos de personajes recibidos y filtrados:', JSON.stringify(this.personajes, null,2));
+      console.log('Datos de personajes recibidos y filtrados:', JSON.stringify(this.jugadores, null,2));
+    }
+
+    async esperar(ms: number) {
+      return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     async iniciarNuevaPartida() {
@@ -39,7 +63,7 @@ export class HomePage {
     }
 
     continuarPartida() {
-      
+      this.router.navigate(['/comprobar-datos']);
     }
 
 }

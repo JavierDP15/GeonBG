@@ -1,0 +1,19 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>comprobar-datos</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+  <!-- <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">comprobar-datos</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+  <div id="main">
+    <div *ngFor="let personaje of personajesSeleccionados">
+      <h2>Jugador {{ personaje.id_jugador }}</h2>
+      <h4>{{ personaje.nombre }}</h4>
+    </div>
+  </div>
+</ion-content>

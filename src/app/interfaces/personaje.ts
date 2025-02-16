@@ -4,5 +4,5 @@ export interface Personaje {
     retrato: string;
     foto: string;
     seleccionado: boolean;
-    idJugador: number;
+    id_jugador: number;
 }

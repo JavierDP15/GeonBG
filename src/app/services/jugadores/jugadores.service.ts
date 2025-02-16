@@ -28,7 +28,7 @@ export class JugadoresService {
       const jugadores = await db.query('SELECT * FROM jugadores;');
       
       this.jugadores.set(jugadores.values ? jugadores.values as Jugador[] : []);
-      console.log('Jugadores cargados:', this.jugadores());
+      console.log('Jugadores cargados:', JSON.stringify(this.jugadores, null,2));
     } catch (error) {
       console.error('Error al cargar los jugadores:', error);
     }
