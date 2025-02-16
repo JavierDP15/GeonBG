@@ -22,4 +22,8 @@ export const routes: Routes = [
     path: 'seleccion-pj/:id',
     loadComponent: () => import('./pages/seleccion-pj/seleccion-pj.page').then(m => m.SeleccionPjPage)
   },
+  {
+    path: 'hoja-personaje-selec/:id-pj/:id-jugador',
+    loadComponent: () => import('./pages/hoja-personaje-selec/hoja-personaje-selec.page').then( m => m.HojaPersonajeSelecPage)
+  },
 ];

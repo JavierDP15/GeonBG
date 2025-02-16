@@ -10,6 +10,7 @@
         transform: translate(-9vw, 2vh);
     }
 }
+
 .boton{
     background: url('../../../assets/img/Boton.png');
     background-size: cover;
@@ -40,4 +41,10 @@
     flex-direction: row;
     justify-content: start;
     align-items: end;
+}
+
+.seleccionado {
+    filter: grayscale(100%);
+    // opacity: 0.6;
+    pointer-events: none;
 }

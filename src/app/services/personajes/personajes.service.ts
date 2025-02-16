@@ -25,7 +25,7 @@ export class PersonajesService {
   //   }
   // }
 
-  async loadJugadores() {
+  async loadPersonajes() {
     const db = this.sqliteservice.getDatabaseConnection();
     const personajes = await db.query('SELECT * FROM personajes;');
     this.personajes.set(personajes.values || []);
@@ -49,7 +49,7 @@ export class PersonajesService {
       `;
       try {
         await db.execute(query);
-        this.loadJugadores();
+        this.loadPersonajes();
         console.log('Personajes insertados.');
       } catch (error) {
         console.error('Error al reiniciar los personajes:', error);
@@ -60,16 +60,18 @@ export class PersonajesService {
     }
   }
 
-  async seleccionarPersonaje(jugadorId: number, personajeNombre: string) {
+  async seleccionarPersonaje(jugadorId: number, personajeId: number) {
     const db = this.sqliteservice.getDatabaseConnection();
     if (db) {
       try {
         const query = `
         UPDATE personajes
         SET id_jugador = ?, seleccionado = 1
-        WHERE nombre = ?;
+        WHERE id = ?;
         `;
-        await db.run(query, [jugadorId, personajeNombre]);
+        await db.run(query, [jugadorId, personajeId]);
+        this.loadPersonajes();
+        console.log('Personaje seleccionado.')
       } catch (error) {
         console.error('Error al asignar el personaje al jugador:', error);
         throw error;
@@ -81,69 +83,21 @@ export class PersonajesService {
     return this.personajes();
   }
 
-  // async getPersonajes(): Promise<{
-  //   id: number,
-  //   nombre: string,
-  //   retrato: string,
-  //   foto: string,
-  //   seleccionado: boolean,
-  //   idJugador: number
-  // }[]> {
-  //   try {
-  //     const db = this.sqliteservice.getDatabaseConnection();
-
-  //     if (!db) {
-  //       throw new Error('No hay conexión a la base de datos.');
-  //     }
-
-  //     const query = `SELECT * FROM personajes`;
-  //     const result = await db.query(query);
-
-  //     if (!result.values || result.values.length === 0) {
-  //       return [];
-  //     }
-
-  //     return result.values as { 
-  //           id: number, 
-  //           nombre: string,
-  //           retrato: string,
-  //           foto: string,
-  //           seleccionado: boolean,
-  //           idJugador: number  
-  //         }[];
-  //     // if (result.values && result.values.length > 0) {
-  //     //   return result.values as { 
-  //     //     id: number, 
-  //     //     nombre: string,
-  //     //     retrato: string,
-  //     //     foto: string,
-  //     //     seleccionado: boolean,
-  //     //     idJugador: number  
-  //     //   }[];
-  //     // } else {
-  //     //   return [];
-  //     // } 
-  //     } catch (error) {
-  //       console.error('Error al obtener la lista de personajes:', error);
-  //       throw error;
-  //   }
-  // }
-
-  async getPersonajePorID(id: number) {
+  async getPersonajePorID(id: number): Promise<Personaje | null> {
     const db = this.sqliteservice.getDatabaseConnection();
 
     if (!db) {
       throw new Error('No hay conexión a la base de datos.');
     }
 
-    const query = `
-    SELECT * FROM personajes
-    WHERE id = ?
-    `;
     try {
+      const query = `
+      SELECT * FROM personajes
+      WHERE id = ?
+      `;
       const result = await db.query(query, [id]);
       if (result && result.values && result.values.length > 0) {
-        return result.values[0];
+        return result.values[0] as Personaje;
       } else {
         console.log('No se encontró el personaje con ID: ', id);
         return null;

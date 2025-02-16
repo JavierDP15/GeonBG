@@ -17,16 +17,9 @@
       <ng-container *ngFor="let personaje of personajes; let i = index">
         <app-boton-personaje 
           [personaje]="personaje" 
-          [index]="i" 
-          (personajeSeleccionado)="mostrarHojaPersonaje(i)"></app-boton-personaje>
+          [index]="i"
+          [id_jugador]="jugadorId" ></app-boton-personaje>
       </ng-container>
     </div>
-  </div>
-
-  <div class="hoja-pj" *ngIf="personajeSeleccionado !== null && getPersonajeSeleccionado()">
-    <app-hoja-personaje 
-      [personaje]="getPersonajeSeleccionado()"
-      (deseleccionar)="deseleccionarPersonaje()">
-    </app-hoja-personaje>
   </div>
 </ion-content>

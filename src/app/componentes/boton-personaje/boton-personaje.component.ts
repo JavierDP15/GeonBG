@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Personaje } from 'src/app/interfaces/personaje';
 
 @Component({
@@ -12,19 +13,21 @@ import { Personaje } from 'src/app/interfaces/personaje';
 export class BotonPersonajeComponent  implements OnInit {
   @Input() personaje!: Personaje;
   @Input() index!: number;
-  @Output() personajeSeleccionado = new EventEmitter<number>();
+  @Input() id_jugador!: number;
+  // @Output() personajeSeleccionado = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
-  ngOnInit() {
-    // console.log(this.index);
-  }
+  ngOnInit() { }
 
   esPar(num: number): boolean {
     return num % 2 === 0;
   }
 
   onClick() {
-    this.personajeSeleccionado.emit(this.index);
+    console.log(this.index);
+    this.router.navigate(['/hoja-personaje-selec', this.index + 1, this.id_jugador])
   }
 }

@@ -10,7 +10,6 @@ import { BotonPersonajeComponent } from 'src/app/componentes/boton-personaje/bot
 import { ActivatedRoute } from '@angular/router';
 import { Jugador } from 'src/app/interfaces/jugador';
 import { SqliteService } from 'src/app/services/sqlite.service';
-import { HojaPersonajeComponent } from 'src/app/componentes/hoja-personaje/hoja-personaje.component';
 
 @Component({
   selector: 'app-seleccion-pj',
@@ -24,8 +23,7 @@ import { HojaPersonajeComponent } from 'src/app/componentes/hoja-personaje/hoja-
     IonToolbar, 
     CommonModule, 
     FormsModule,
-    BotonPersonajeComponent,
-    HojaPersonajeComponent
+    BotonPersonajeComponent
   ]
 })
 export class SeleccionPjPage implements OnInit {
@@ -34,7 +32,7 @@ export class SeleccionPjPage implements OnInit {
   jugadores = this.jugadoresService.getJugadores();
   personajes: Personaje[] = [];
   // personajes = this.personajesService.getPersonajes();
-  personajeSeleccionado: number | null = null;
+  // personajeSeleccionado: number | null = null;
 
   constructor(
     private sqlite: SqliteService,
@@ -46,28 +44,9 @@ export class SeleccionPjPage implements OnInit {
   async ngOnInit() {
     try {
       this.personajes = this.personajesService.getPersonajes();
-      this.cantidadJugadores = this.jugadores.length;
+      this.cantidadJugadores = this.jugadores().length;
     } catch (error) {
       console.error('Se ha producido un error.')
     }
-  }
-
-  mostrarHojaPersonaje(index: number) {
-    this.personajeSeleccionado = index;
-  }
-
-  deseleccionarPersonaje() {
-    this.personajeSeleccionado = null;
-  }
-
-  getPersonajeSeleccionado(): Personaje{
-    return this.personajes[this.personajeSeleccionado!] 
-              || 
-           {id: '', 
-           nombre: '', 
-           retrato: '', 
-           foto: '', 
-           seleccionado: '', 
-           idJugador: '' };
   }
 }

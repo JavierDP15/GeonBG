@@ -14,6 +14,8 @@ import { Platform } from '@ionic/angular/standalone';
   imports: [IonHeader, IonToolbar, IonTitle, IonContent],
 })
 export class HomePage {
+  partidaEnCurso: boolean = false;
+
   constructor(
     private sqliteService: SqliteService,
     private personajesService: PersonajesService,
@@ -22,14 +24,7 @@ export class HomePage {
     private platform: Platform) {}
 
     async ngOnInit() {
-      // try {
-      //   await this.platform.ready();
-      //   await this.sqliteService.iniciarBD();
-      //   console.log('Conexion a la base de datos realizada');
-      // } catch (error) {
-      //   console.error ('Error al conectar a la base de datos:', error);
-      //   return;
-      // }
+      this.partidaEnCurso = await this.sqliteService.hayPartidaEnCurso();
     }
 
     async iniciarNuevaPartida() {
@@ -41,6 +36,10 @@ export class HomePage {
         console.error('Error al iniciar nueva partida:', error);
       }
       this.router.navigate(['/numero-jugadores']);
+    }
+
+    continuarPartida() {
+      
     }
 
 }

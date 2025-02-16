@@ -24,66 +24,58 @@ export class SqliteService {
         );
         
         await this.db.open();
+
+        const crearTablaPartidaEnCurso = `CREATE TABLE IF NOT EXISTS partida (
+          id INTEGER PRIMARY KEY,
+          enCurso BOOLEAN DEFAULT 0
+        );`;
+        await this.db.execute(crearTablaPartidaEnCurso);
+
+        const result = await this.db.query(`SELECT COUNT(*) as count FROM partida;`);
+
+        if (result.values && result.values.length > 0 && result.values[0].count === 0) {
+          await this.db.execute(`INSERT INTO partida (enCurso) VALUES (0);`);
+          console.log('Se ha insertado una fila inicial en la tabla partida.');
+        }
+
       } catch (error) {
         console.error('Error al conectar a la base de datos:')
       }
   }
 
-  // async iniciarBD(): Promise<void> {
-  //   try {
-  //     console.log('Holi')
-  //     // const connection: SQLiteDBConnection | null = await CapacitorSQLite.createConnection({
-  //     this.db = await CapacitorSQLite.createConnection({
-  //       database: dbName,
-  //       version: 1,
-  //       encrypted: false,
-  //       mode: 'no-encrypted',
-  //     }) as unknown as SQLiteDBConnection;
+  // async hayPartidaEnCurso(): Promise<boolean> {
+  //   if (!this.db) {
+  //     console.error('No hay conexión a la base de datos');
+  //     return false;
+  //   }
 
-  //     if (!this.db) {
-  //       throw new Error('No se pudo abrir la conexion a la base de datos.')
-  //     }
+  //   const query = `SELECT * FROM partida WHERE enCurso = 1`;
 
-  //     await this.db.open();
-  //     console.log('Base de datos inicializada correctamente');
+  //   try{
+  //     const result = await this.db.query(query);
+
+  //     return !!(result.values && result.values.length > 0);
   //   } catch (error) {
-  //     console.error('Error al inicializar la base de datos:', error);
+  //     console.error('Error al verificar la partida en curso:', error);
+  //     return false;
   //   }
   // }
 
-  // async iniciarBD() {
-  //   try {
+  async hayPartidaEnCurso(): Promise<boolean> {
+    const query = `SELECT enCurso FROM partida LIMIT 1;`;
 
-  //     const dbResult = await CapacitorSQLite.checkConnectionsConsistency({ dbNames: [this.dbName] });
-
-  //     if (dbResult.result) {
-  //       console.log('Conexión SQLite consistente.');
-  //     } else {
-  //       console.warn('Inconsistencia en la conexión SQLite.');
-  //     }
-
-  //     // Crear conexión
-  //     await CapacitorSQLite.createConnection({
-  //       database: this.dbName,
-  //       version: 1,
-  //       encrypted: false,
-  //       mode: 'no-encrypted',
-  //     });
-
-  //     this.db = await CapacitorSQLite.retrieveConnection(this.dbName);
-
-  //     if (!this.db) {
-  //       throw new Error('No se pudo obtener la conexión a la base de datos.');
-  //     }
-
-  //     // Abrir la base de datos
-  //     await this.db.open();
-  //     console.log('Base de datos abierta correctamente.');
-  //   } catch (error) {
-  //     console.error('Error al inicializar la base de datos:', error);
-  //     throw error;
-  //   }
-  // }
+    try {
+      const result = await this.db.query(query);
+      if (result.values && result.values.length > 0) {
+        return result.values[0].enCurso === 1;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      console.error('Error al verificar partida en curso:', error);
+      return false;
+    }
+  }
 
   // Método para obtener la conexión a la BD
   getDatabaseConnection(): SQLiteDBConnection {
