@@ -28,10 +28,22 @@ export class AppComponent {
 
   async initApp() {
     await this.platform.ready();
-    // await SplashScreen.show();
     console.log('Iniciando base de datos...');
     await this.database.inicBD();
     console.log('Base de datos iniciada');
+
+    this.platform.pause.subscribe(() => {
+      this.onPause();
+    })
+  }
+
   async onPause() {
+    try {
+      await this.database.guardarDatos();
+      this.database.closeConnection();
+      console.log('La aplicación se ha pausado y los datos se han guardado correctamente.');
+    } catch (error) {
+      console.error('Error al guardar los datos al pausar la aplicacion:', error);
+    }
   }
 }

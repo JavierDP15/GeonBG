@@ -97,8 +97,8 @@ export class SqliteService {
     }
   }
 
-  // getDatabaseConnection(): SQLiteDBConnection | null {
-  //   return this.db;
-  // }
+  closeConnection() {
+    this.db.close();
+  }
 }
 
