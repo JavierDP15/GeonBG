@@ -32,6 +32,6 @@ export class AppComponent {
     console.log('Iniciando base de datos...');
     await this.database.inicBD();
     console.log('Base de datos iniciada');
-    // await SplashScreen.hide();
+  async onPause() {
   }
 }
