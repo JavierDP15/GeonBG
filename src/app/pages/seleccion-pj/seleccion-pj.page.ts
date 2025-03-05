@@ -26,7 +26,7 @@ import { SqliteService } from 'src/app/services/sqlite.service';
     BotonPersonajeComponent
   ]
 })
-export class SeleccionPjPage implements OnInit {
+export class SeleccionPjPage {
   jugadorId: number = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
   cantidadJugadores: number | null = null;
   jugadores = this.jugadoresService.getJugadores();
@@ -41,7 +41,7 @@ export class SeleccionPjPage implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  async ngOnInit() {
+  async ionViewWillEnter() {
     try {
       this.personajes = this.personajesService.getPersonajes();
       this.cantidadJugadores = this.jugadores().length;
