@@ -29,7 +29,8 @@
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    width: 45%;
+    width: 55%;
+    // width: 45%;
     // padding-bottom: 1.5%;
     
     #titulo{
@@ -46,6 +47,14 @@
       height: 50%;
 
       animation: menuAparece 4s ease-in-out forwards;
+
+      .fila {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
       
       .boton{
         background: url('../../assets/img/Boton.png') no-repeat center center;
@@ -56,8 +65,10 @@
         width: 877px;
         height: 60px;
 
-        max-width: 80%;
-        max-height: 50%;
+        // max-width: 80%;
+        // max-height: 50%;
+        max-width: 100%;
+        max-height: 80%;
         padding-top: 0.4rem;
 
         font-family: 'Sketsa', sans-serif;

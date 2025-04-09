@@ -23,14 +23,16 @@ export class PersonajesService {
       INSERT INTO personajes (nombre, retrato, foto, seleccionado, id_Jugador) VALUES
       ('Anush Faris', 'assets/retratos/Anush_Faris.png', 'assets/fotos/Anush.png', 0, null),
       ('Daria Samira', 'assets/retratos/Daria_Samira.png', 'assets/fotos/Daria.png', 0, null),
+      ('Eileen Galena', 'assets/retratos/Eileen_Galena.png', 'assets/fotos/Eileen.png', 0, null),
       ('Elmira Falak', 'assets/retratos/Elmira_Falak.png', 'assets/fotos/Elmira.png', 0, null),
       ('Kamran Soroush', 'assets/retratos/Kamran_Soroush.png', 'assets/fotos/Kamran.png', 0, null),
-      ('Kavan Arash', 'assets/retratos/Kavan_Arash.png', '', 0, null),
-      ('Mahdi Kaveh', 'assets/retratos/Mahdi_Kaveh.png', '', 0, null),
-      ('Nahid Minoo', 'assets/retratos/Nahid_Minoo.png', '', 0, null),
-      ('Renad Alkifa', 'assets/retratos/Renad_Alkifa.png', '', 0, null),
-      ('Tarsa Yasmin', 'assets/retratos/Tarsa_Yasmin.png', '', 0, null),
-      ('Xander Vasilios', 'assets/retratos/Xander_Vasilios.png', '', 0, null);
+      ('Kavan Arash', 'assets/retratos/Kavan_Arash.png', 'assets/fotos/Kavan.png', 0, null),
+      ('Mahdi Kaveh', 'assets/retratos/Mahdi_Kaveh.png', 'assets/fotos/Mahdi.png', 0, null),
+      ('Nahid Minoo', 'assets/retratos/Nahid_Minoo.png', 'assets/fotos/Nahid.png', 0, null),
+      ('Nitara_saanvi', 'assets/retratos/Nitara_Saanvi.png', 'assets/fotos/Nitara.png', 0, null),
+      ('Renad Alkifa', 'assets/retratos/Renad_Alkifa.png', 'assets/fotos/Renad.png', 0, null),
+      ('Tarsa Yasmin', 'assets/retratos/Tarsa_Yasmin.png', 'assets/fotos/Tarsa.png', 0, null),
+      ('Xander Vasilios', 'assets/retratos/Xander_Vasilios.png', 'assets/fotos/Xander.png', 0, null);
       `;
       try {
         await db.execute(query);

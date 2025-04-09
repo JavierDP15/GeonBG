@@ -7,13 +7,14 @@ import { SqliteService } from '../services/sqlite.service';
 import { Platform } from '@ionic/angular/standalone';
 import { PartidaService } from '../services/partida/partida.service';
 import { Partida } from '../interfaces/partida';
+import { SharedModule } from '../shared/shared.module';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, SharedModule],
 })
 export class HomePage {
   partidaEnCurso: boolean = false;

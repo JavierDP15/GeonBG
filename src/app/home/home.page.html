@@ -20,9 +20,14 @@
         <img src="../../assets/img/Logo.png" alt="titulo" class="titulo">
       </div>
       <div id="menu">
-        <button class="boton sketsa" (click)="continuarPartida()" [class.no-partida]="!partidaEnCurso"><span>Continuar</span></button>
-        <button class="boton sketsa" (click)="iniciarNuevaPartida()"><span>Nueva Partida</span></button>
-        <button class="boton sketsa"><span>Opciones</span></button>
+        <ion-row class="fila">
+          <button class="boton sketsa" (click)="continuarPartida()" [class.no-partida]="!partidaEnCurso"><span>Continuar</span></button>
+          <button class="boton sketsa" (click)="iniciarNuevaPartida()"><span>Nueva Partida</span></button>
+        </ion-row>
+        <ion-row class="fila">
+          <button class="boton sketsa"><span>Opciones</span></button>
+          <button class="boton sketsa"><span>Enciclopedia</span></button>
+        </ion-row>
       </div>
     </div>
   </div>
