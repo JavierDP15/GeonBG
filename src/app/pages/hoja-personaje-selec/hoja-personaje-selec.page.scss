@@ -1,20 +1,20 @@
 @font-face {
     font-family: 'Sketsa';
-    src: url('../../../assets/fonts/Sketsa.ttf');
+    src: url('/assets/fonts/Sketsa.ttf');
   }
 
 @font-face {
     font-family: 'Poor-Rich';
-    src: url('../../../assets/fonts/Poor-Rich.TTF');
+    src: url('/assets/fonts/Poor-Rich.TTF');
 }
 
 @font-face {
     font-family: 'Hidayatullah';
-    src: url('../../../assets/fonts/Hidayatullah.ttf');
+    src: url('/assets/fonts/Hidayatullah.ttf');
 }
 
 .fondo {
-    background: url('../../../assets/img/Fondo_Hoja_Pj.jpg');
+    background: url('/assets/img/Fondo_Hoja_Pj.jpg');
     background-size: cover;
 
     display: flex;
@@ -22,22 +22,27 @@
     align-items: center;
     justify-content: center;
 
-    width: 100vw;
-    height: 100vh;
+    // width: 100vw;
+    width: auto;
+    min-height: 100vh;
+    // height: 100vh;
 
     overflow: hidden;
 }
 
 .hoja-personaje {
-    background: url('../../../assets/img/Panel_Personaje.png');
+    background: url('/assets/img/Panel_Personaje.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 
     width: 92.5%;
     height: 92.5%;
+    max-height: 92.5%;
+    max-width: 92.5%;
 
-    transform: translateX(2px);
+    transform: translate(2px, -9%);
+    // transform: translateX(2px);
 
     display: flex;
     flex-direction: row;
@@ -45,84 +50,103 @@
     justify-content: start;
 
     padding-left: 7%;
-    padding-top: 5%;
 
     position: relative;
 
     // column-gap: 5%;
 
     .estadisticas {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+
+        padding-top: 21%;
+
         color: #e5bf5a;
         font-family: 'Hidayatullah', sans-serif;
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         text-shadow: 0px 2px 0px black;
 
-        background: url('../../../assets/img/Atributos.png');
-
         height: 100%;
+        width: 45px;
 
-        // display: flex;
-        // flex-direction: column;
-        // align-items: center;
-        // padding-top: 11%;
+        z-index: 1;
 
-        .rojo {
-            position: absolute;
-            top: 34%;
+        .estadistica {
+            position: relative;
+
+            background: url('/assets/img/Panel_Atributo.png');
+            background-size: cover;
+
+            height: 45px;
+            width: 50px;
+
+            display: flex;
+            flex-direction: row;
+
+            align-items: end;
+            justify-items: end;
         }
 
-        .azul {
+        .valor {
             position: absolute;
-            top: 48%;
+            top: 32%;
+            left: 10%;
         }
 
-        .amarillo {
+        .icono {
             position: absolute;
-            top: 62%;
+            top: 38%;
+            left: 49%;
+            transform: translate(-50%, -50%);
+            width: 35px;
+            height: auto;
         }
-
-        .verde {
-            position: absolute;
-            top: 76%;
-        }
-
     }
     
-    .foto {
+    .foto_pj {
         // width: 275px;
-        width: 33%;
+        width: 68%;
         height: auto;
         max-height: 100%;
-        object-fit: cover;
-        transform: translateY(-30px);
+        object-fit: contain;
+        transform: translate(-30%, 10%);
 
-        margin-left: 6%;
+        z-index: 0;
+
     }
 
     .nombre {
-        // padding-top: 0.65rem;
-        // padding-left: -0.5rem;
+        background: url('/assets/img/Recuadro_Nombre_Personaje.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 40%;
+        height: 22%;
+
         font-family: 'Sketsa', sans-serif;
         color: #e5bf5a;
-        font-size: 1.7rem;
+        font-size: 2.2rem;
         text-shadow: 0px 1px 0px black;
         text-align: center;
-        // transform: translateX(-12.8%);
-        // transform: translateX(-50%);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         position: absolute;
-        top: 14.5%;
-        left: 54.5%;
+        top: 13%;
+        left: 43%;
     }
 
     .body {
         position: absolute;
-        top: 22%;
-        left: 43%;
+        top: 28%;
+        left: 40%;
 
         display: flex;
         flex-direction: column;
-        row-gap: 4.5%;
+        row-gap: 4.4%;
         // padding-top: 6%;
 
         width: 49%;
@@ -142,40 +166,52 @@
         }
     }
 
-    .seleccionar {
-        background: url('../../../assets/img/Boton.png');
-        background-size: cover;
+    .botones {
+        display: flex;
+        flex-direction: row;
+        // justify-content: center;
+        align-items: end;
+        gap: 0.5rem;
 
-        padding-top: 1rem;
-        font-family: 'Sketsa', sans-serif;
-        color: #e5bf5a;
-        font-size: 1.6rem;
-        text-shadow: 0px 1px 0px black;
-        text-align: center;
+        width: 40%;
 
-        // width: 70%;
-        // height: 58px;
-        width: 255px;
-        height: 55px;
-
-        align-self: center;
-        // transform: translateX(4%);
-        // transform: translateY(-8px);
-        // margin-top: 5%;
         position: absolute;
-        top: 86%;
-        left: 52%;
+        top: 77%;
+        left: 45%;
+
+        .seleccionar {
+            background: url('/assets/img/Boton.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            
+            padding-top: 0.9rem;
+            font-family: 'Sketsa', sans-serif;
+            color: #e5bf5a;
+            font-size: 1.9rem;
+            text-shadow: 0px 1px 0px black;
+            text-align: center;
+            
+            // width: 70%;
+            // height: 58px;
+            width: 255px;
+            height: 55px;
+            
+            align-self: center;
+            // transform: translateX(4%);
+            // transform: translateY(-8px);
+            // margin-top: 5%;
+            // position: absolute;
+            // top: 86%;
+            // left: 45%;
+        }
+        
+        .volver {
+            background: url('/assets/icon/Volver.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            width: 40px;
+            height: 40px;
+        }
     }
-}
-
-.cerrar {
-    background: url('../../../assets/icon/Cerrar.png');
-    background-size: cover;
-
-    width: 50px;
-    height: 50px;
-
-    position: absolute;
-    top: 10%;
-    left: 15%;
 }

@@ -63,7 +63,7 @@ export class HojaPersonajeSelecPage implements OnInit {
     }
   }
 
-  cerrar() {
+  volver() {
     this.router.navigate(['/seleccion-pj', this.jugadorId]);
   }
 }

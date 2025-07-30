@@ -1,20 +1,20 @@
 @font-face {
     font-family: 'Sketsa';
-    src: url('../../../../assets/fonts/Sketsa.ttf');
+    src: url('/assets/fonts/Sketsa.ttf');
   }
 
 @font-face {
     font-family: 'Poor-Rich';
-    src: url('../../../../assets/fonts/Poor-Rich.TTF');
+    src: url('/assets/fonts/Poor-Rich.TTF');
 }
 
 @font-face {
     font-family: 'Hidayatullah';
-    src: url('../../../../assets/fonts/Hidayatullah.ttf');
+    src: url('/assets/fonts/Hidayatullah.ttf');
 }
 
 .fondo {
-    background: url('../../../../assets/img/Fondo_Hoja_Pj.jpg');
+    background: url('/assets/img/Fondo_Hoja_Pj.jpg');
     background-size: cover;
 
     display: flex;
@@ -22,22 +22,27 @@
     align-items: center;
     justify-content: center;
 
-    width: 100vw;
-    height: 100vh;
+    // width: 100vw;
+    width: auto;
+    min-height: 100vh;
+    // height: 100vh;
 
     overflow: hidden;
 }
 
 .hoja-personaje {
-    background: url('../../../../assets/img/Panel_Personaje.png');
+    background: url('/assets/img/Panel_Personaje.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 
     width: 92.5%;
     height: 92.5%;
+    max-height: 92.5%;
+    max-width: 92.5%;
 
-    transform: translateX(2px);
+    transform: translate(2px, -9%);
+    // transform: translateX(2px);
 
     display: flex;
     flex-direction: row;
@@ -45,7 +50,6 @@
     justify-content: start;
 
     padding-left: 7%;
-    padding-top: 5%;
 
     position: relative;
 
@@ -57,7 +61,7 @@
         align-items: center;
         gap: 8px;
 
-        padding-top: 12%;
+        padding-top: 21%;
 
         color: #e5bf5a;
         font-family: 'Hidayatullah', sans-serif;
@@ -72,7 +76,7 @@
         .estadistica {
             position: relative;
 
-            background: url('../../../../assets/img/Panel_Atributo.png');
+            background: url('/assets/img/Panel_Atributo.png');
             background-size: cover;
 
             height: 45px;
@@ -101,49 +105,48 @@
         }
     }
     
-    .foto {
+    .foto_pj {
         // width: 275px;
-        width: 55%;
+        width: 68%;
         height: auto;
         max-height: 100%;
-        object-fit: cover;
-        transform: translateX(-23%);
+        object-fit: contain;
+        transform: translate(-30%, 10%);
 
         z-index: 0;
 
-        // margin-left: 6%;
     }
 
     .nombre {
-        background: url('../../../../assets/img/Recuadro_Nombre_Personaje.png');
-        background-size: cover;
+        background: url('/assets/img/Recuadro_Nombre_Personaje.png');
+        background-size: contain;
+        background-repeat: no-repeat;
         width: 40%;
-        height: 20%;
+        height: 22%;
 
         font-family: 'Sketsa', sans-serif;
         color: #e5bf5a;
-        font-size: 2rem;
+        font-size: 2.2rem;
         text-shadow: 0px 1px 0px black;
         text-align: center;
 
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 2.3%;
 
         position: absolute;
-        top: 10%;
+        top: 13%;
         left: 43%;
     }
 
     .body {
         position: absolute;
-        top: 26%;
+        top: 27%;
         left: 40%;
 
         display: flex;
         flex-direction: column;
-        row-gap: 4.5%;
+        row-gap: 4.4%;
         // padding-top: 6%;
 
         width: 49%;
@@ -173,17 +176,18 @@
         width: 40%;
 
         position: absolute;
-        top: 79%;
-        left: 43%;
+        top: 77%;
+        left: 45%;
 
         .seleccionar {
-            background: url('../../../../assets/img/Boton.png');
-            background-size: cover;
+            background: url('/assets/img/Boton.png');
+            background-size: contain;
+            background-repeat: no-repeat;
             
-            padding-top: 1rem;
+            padding-top: 0.9rem;
             font-family: 'Sketsa', sans-serif;
             color: #e5bf5a;
-            font-size: 1.6rem;
+            font-size: 1.9rem;
             text-shadow: 0px 1px 0px black;
             text-align: center;
             
@@ -202,8 +206,9 @@
         }
         
         .volver {
-            background: url('../../../../assets/icon/Volver.png');
-            background-size: cover;
+            background: url('/assets/icon/Volver.png');
+            background-size: contain;
+            background-repeat: no-repeat;
 
             width: 40px;
             height: 40px;
