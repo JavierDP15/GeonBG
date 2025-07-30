@@ -1,0 +1,56 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>hoja-personaje</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+  <!-- <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">hoja-personaje</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+  <div class="fondo">
+    <div class="hoja-personaje">
+      <div class="estadisticas">
+        <div class="estadistica">
+          <img src="../../../../assets/icon/Atributo_Fisico.png" alt="atr_fisico" class="icono">
+          <div class="valor">1</div>
+        </div>
+        <div class="estadistica">
+          <img src="../../../../assets/icon/Atributo_Mental.png" alt="atr_fisico" class="icono">
+          <div class="valor">2</div>
+        </div>
+        <div class="estadistica">
+          <img src="../../../../assets/icon/Atributo_Social.png" alt="atr_fisico" class="icono">
+          <div class="valor">3</div>
+        </div>
+        <div class="estadistica">
+          <img src="../../../../assets/icon/Atributo_Suerte.png" alt="atr_fisico" class="icono">
+          <div class="valor">4</div>
+        </div>
+      </div>
+      <div class="foto">
+        <img src="../../../../assets/fotos/Daria.png" alt="foto_pj" class="foto_pj">
+        <!-- <img src="{{personaje?.foto}}" alt="foto_{{personaje?.nombre}}"> -->
+      </div>
+      <div class="nombre">Daria Samira</div>
+      <!-- <div class="nombre">{{personaje?.nombre}}</div> -->
+      <div class="body">
+        <div class="descripcion">
+          <div class="cat profesion">Profesión: Mago.</div>
+          <div class="cat especialidades">Especialidad: Alid, Brujo de Arena, Maestro del Equilibrium, Cabal.</div>
+          <div class="cat cartas-iniciales">Cartas Iniciales: Canalizar, Deducir, 1 al azar.</div>
+          <div class="cat clase-social">Clase Social: Korra.</div>
+          <div class="cat localidad-inicial">Localidad Inicial: Valora.</div>
+          <div class="cat trasfondo-inicial">Trasfondo Inicial: Accidente con Gei, Cita con Leila, Misión de Investigación.</div>
+        </div>
+      </div>
+      <div class="botones">
+        <div class="seleccionar" (click)="seleccionar()">Seleccionar</div>
+        <button class="volver" (click)="volver()"></button>
+      </div>
+    </div>
+  </div>
+  
+</ion-content>

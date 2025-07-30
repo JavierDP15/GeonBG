@@ -27,6 +27,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/hoja-personaje-selec/hoja-personaje-selec.page').then( m => m.HojaPersonajeSelecPage)
   },
   {
+    path: 'hoja-personaje-selec-prueba',
+    loadComponent: () => import('./pages/pruebas/hoja-personaje-selec-prueba/hoja-personaje-selec-prueba.page').then( m => m.HojaPersonajeSelecPagePrueba)
+  },
+  {
     path: 'comprobar-datos',
     loadComponent: () => import('./pages/comprobar-datos/comprobar-datos.page').then( m => m.ComprobarDatosPage)
   },
